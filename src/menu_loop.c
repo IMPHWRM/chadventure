@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "menu.h"
+
 #include <SDL2/SDL.h>
 
 int menu_loop()

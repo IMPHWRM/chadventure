@@ -3,9 +3,10 @@
 
 #include <SDL2/SDL.h>
 
-#include "menu_loop.c"
-#include "game_loop.c"
+#include "menu.h"
+#include "game.h"
 
+#include "src_file.c"
 int main(int argc,char* argv[])
 {
 	printf("Start main function.\n");
@@ -15,22 +16,27 @@ int main(int argc,char* argv[])
 	int running=1;
 	while(running)
 	{
-		if(state==1)
+		switch(state)
 		{
-			printf("Open menu loop.\n");
-			state=menu_loop();
-			printf("Quit menu loop.\n");
-		}
-		if(state==2)
-		{
-			printf("Open game loop.\n");
-			state=game_loop();
-			printf("Quit game loop.\n");
-		}
-		if(state==0)
-		{
-			running=0;
-			printf("Quit prog.\n");
+			//menu
+			case 1:
+				printf("Open menu loop.\n");
+				state=menu_loop();
+				printf("Quit menu loop.\n");
+				break;
+			//game
+			case 2:
+				printf("Open game loop.\n");
+				state=game_loop();
+				printf("Quit game loop.\n");
+				break;
+			//end
+			case 0:
+				running=0;
+				printf("Quit prog.\n");
+				break;
+			default :
+				running=0;
 		}
 	}
 	SDL_Quit();
